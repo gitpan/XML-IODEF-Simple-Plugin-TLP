@@ -3,7 +3,7 @@ package XML::IODEF::Simple::Plugin::TLP;
 use warnings;
 use strict;
 
-our $VERSION = '0.00_01';
+our $VERSION = '0.00_02';
 $VERSION = eval $VERSION;
 
 my $map = {
@@ -27,9 +27,7 @@ sub convert {
     my $info = shift;
     my $iodef = shift;
     my $r = lc($info->{'restriction'});
-    
-    $iodef->add('Incidentrestriction',$map->{$r}); 
-
+    $info->{'restriction'} = $map->{$r};
     return($iodef);
 }
 
@@ -37,7 +35,7 @@ sub convert {
 __END__
 =head1 NAME
 
-XML::IODEF::Simple::Plugin - XML::IODEF::Simple plugin for converting from TLP
+XML::IODEF::Simple::Plugin::TLP - XML::IODEF::Simple plugin for converting from TLP
 
 =head1 SYNOPSIS
 
